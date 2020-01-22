@@ -1,3 +1,33 @@
+.app {
+	margin-top: 30px;
+}
+.calendar-column {
+	padding: 0;
+	border: 1px solid #cccccc;
+	margin-bottom: 30px;
+}
 .DayPicker {
-	float: left;
+	width: 100%;
+}
+.DayPicker-Caption {
+	font-size: 18px;
+}
+.DayPicker-Day {
+	height: 60px;
+	font-size: 18px;
+}
+.DayPicker-Month {
+	width: 100%;
+}
+.DayPicker-NavBar {
+	font-size: 14px;
+}
+.DayPicker-Weekday {
+	font-size: 14px;
+}
+.row.no-margin {
+	margin: 0;
+}
+.tour {
+	margin: 5px 0px;
 }
