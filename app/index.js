@@ -67,7 +67,7 @@ class App extends React.Component{
 						{this.state.tours.map((tour, i)=>{
 							return(
 								<div key={i.toString()}>
-									<a href={"https://case.edu/law/admissions/jd-admissions/visit-us/schedule-visit/tour-registration?date=" + dateFnsFormat(parseISO(tour.start.dateTime), 'MMM. d yyyy h:mm a') + "class=" + tour.summary}>{tour.summary}: {dateFnsFormat(parseISO(tour.start.dateTime), 'h:mm a')} - {dateFnsFormat(parseISO(tour.start.dateTime), 'h:mm a')}</a>
+									<a href={"https://case.edu/law/admissions/jd-admissions/visit-us/schedule-visit/tour-registration?date=" + dateFnsFormat(parseISO(tour.start.dateTime), 'MMM. d yyyy h:mm a') + "&class=" + tour.summary}>{tour.summary}: {dateFnsFormat(parseISO(tour.start.dateTime), 'h:mm a')} - {dateFnsFormat(parseISO(tour.start.dateTime), 'h:mm a')}</a>
 								</div>
 							)
 						})}
