@@ -31,3 +31,18 @@
 .tour {
 	margin: 5px 0px;
 }
+.tour-list {
+	padding-right: 0px;
+}
+/*  mobile  */
+@media (max-width: 767px) {
+	.calendar-column {
+		margin-top: 20px;
+	}
+	.DayPicker-Day {
+		height: 49px;
+	}
+	.tour-list {
+		padding-left: 0px;
+	}
+}
