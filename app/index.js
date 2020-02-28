@@ -77,7 +77,7 @@ class App extends React.Component{
 						</div>
 					) : (
 						(this.state.loaded ? (
-							<div><h3>There are no tours available on {dateFnsFormat(this.state.selectedDay, 'MMM d, yyyy')}. Please select a different date.</h3></div>
+							<div><h3>There are no tours available on {dateFnsFormat(this.state.selectedDay, 'MMM d, yyyy')}. Please select a different date or <a href="mailto:lawadmissions@case.edu">contact Admissions</a>.</h3></div>
 						) : (
 							<p>Please select a day.</p>
 						)
