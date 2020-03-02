@@ -10,14 +10,15 @@
     ]
   },
   "scripts": {
-	"start": "webpack-dev-server --open",
-	"build": "webpack --config webpack.config.js"
+    "start": "webpack-dev-server --open",
+    "build": "webpack --config webpack.config.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "date-fns": "^2.9.0",
+    "date-fns-timezone": "^0.1.4",
     "react": "^16.12.0",
     "react-calendar": "^2.19.2",
     "react-day-picker": "^7.4.0",

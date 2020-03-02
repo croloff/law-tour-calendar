@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import DayPicker from 'react-day-picker';
 import dateFnsFormat from 'date-fns/format';
 import addDays from 'date-fns/addDays';
-import { parseISO, format } from 'date-fns'
+import { parseISO, format } from 'date-fns';
+import { formatToTimeZone } from 'date-fns-timezone';
 import 'react-day-picker/lib/style.css';
 import './index.css';
 
@@ -66,11 +67,40 @@ class App extends React.Component{
 					</div>
 					<div className="col-xs-12 col-sm-6 tour-list">{this.state.loaded && (this.state.tours.constructor === Array) ? (
 						<div><h3>You selected {dateFnsFormat(this.state.selectedDay, 'MMM d, yyyy')}</h3>
-							Tours available
+							Tours available (all time EST)
 							{this.state.tours.map((tour, i)=>{
+								var no_link = false;
+								var custom_link = "";
+								var custom_link_length = 0;
+								if (tour.description) {
+									//urlstart = "yes"
+									//console.log("has desc");
+									//console.log(tour.description.match(/href="([^"]*)/).length);
+									if (tour.description === "NO LINK" || tour.description === "no link") {
+										no_link = true;
+										//console.log("no link on this one");
+									}
+									if (tour.description.match(/href="([^"]*)/) && tour.description.match(/href="([^"]*)/).length === 2) {
+										//console.log("includes href");
+										custom_link = tour.description.match(/href="([^"]*)/)[1];
+										//console.log(custom_link);
+										custom_link_length = custom_link.length;
+									}
+								} else {
+									//console.log("no desc");
+								}
+								
 								return(
 									<div className="tour" key={i.toString()}>
-										<a href={"https://case.edu/law/admissions/jd-admissions/visit-us/schedule-visit/tour-registration?date=" + dateFnsFormat(parseISO(tour.start.dateTime), 'MMM. d yyyy h:mm a') + "&class=" + tour.summary}>{tour.summary}: {dateFnsFormat(parseISO(tour.start.dateTime), 'h:mm a')} - {dateFnsFormat(parseISO(tour.end.dateTime), 'h:mm a')}</a>
+										{no_link ? (
+											tour.summary
+										) : (
+											(custom_link_length > 1 ? (
+												<a href={custom_link}>{tour.summary}: {formatToTimeZone(parseISO(tour.start.dateTime), 'h:mm a', { timeZone: 'America/New_York' })} - {formatToTimeZone(parseISO(tour.end.dateTime), 'h:mm a', { timeZone: 'America/New_York' })}</a>
+											) : (
+												<a href={"https://case.edu/law/admissions/jd-admissions/visit-us/schedule-visit/tour-registration?date=" + formatToTimeZone(parseISO(tour.start.dateTime), 'MMM. d YYYY h:mm a', { timeZone: 'America/New_York' }) + "&class=" + tour.summary}>{tour.summary}: {formatToTimeZone(parseISO(tour.start.dateTime), 'h:mm a', { timeZone: 'America/New_York' })} - {formatToTimeZone(parseISO(tour.end.dateTime), 'h:mm a', { timeZone: 'America/New_York' })}</a>
+											))
+										)}
 									</div>
 								)
 							})}
