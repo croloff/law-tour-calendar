@@ -98,7 +98,7 @@ class App extends React.Component{
 											(custom_link_length > 1 ? (
 												<a href={custom_link}>{tour.summary}: {formatToTimeZone(parseISO(tour.start.dateTime), 'h:mm a', { timeZone: 'America/New_York' })} - {formatToTimeZone(parseISO(tour.end.dateTime), 'h:mm a', { timeZone: 'America/New_York' })}</a>
 											) : (
-												<a href={"https://case.edu/law/admissions/jd-admissions/visit-us/schedule-visit/tour-registration?date=" + formatToTimeZone(parseISO(tour.start.dateTime), 'MMM. d YYYY h:mm a', { timeZone: 'America/New_York' }) + "&class=" + tour.summary}>{tour.summary}: {formatToTimeZone(parseISO(tour.start.dateTime), 'h:mm a', { timeZone: 'America/New_York' })} - {formatToTimeZone(parseISO(tour.end.dateTime), 'h:mm a', { timeZone: 'America/New_York' })}</a>
+												<a href={"https://case.edu/law/admissions/jd-admissions/visit-us/schedule-visit/tour-registration?date=" + formatToTimeZone(parseISO(tour.start.dateTime), 'MMM. DD YYYY h:mm a', { timeZone: 'America/New_York' }) + "&class=" + tour.summary}>{tour.summary}: {formatToTimeZone(parseISO(tour.start.dateTime), 'h:mm a', { timeZone: 'America/New_York' })} - {formatToTimeZone(parseISO(tour.end.dateTime), 'h:mm a', { timeZone: 'America/New_York' })}</a>
 											))
 										)}
 									</div>
